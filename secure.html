@@ -6,232 +6,234 @@
 <title>Secure Guide — Sky Market</title>
 
 <style>
-:root {
-  --blue: #8cc6ff;
-  --blue-strong: #4da3ff;
-  --glass: rgba(255,255,255,0.08);
-  --border: rgba(255,255,255,0.2);
+:root{
+  --blue:#8cc6ff;
+  --blue-strong:#4da3ff;
+  --glass:rgba(255,255,255,0.09);
+  --border:rgba(255,255,255,0.2);
 }
 
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, "Segoe UI", sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Segoe UI",sans-serif}
 
-body {
+body{
+  min-height:100vh;
   background:
     radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
-  color: #fff;
-  min-height: 100vh;
-  overflow-x: hidden;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* ======================
-   BACKGROUND MOTION
+   BACKGROUND ENERGY
 ====================== */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
-.bg span {
-  position: absolute;
-  width: 2px;
-  height: 260px;
-  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
-  opacity: 0.14;
-  animation: rise linear infinite;
+.bg span{
+  position:absolute;
+  width:2px;
+  height:300px;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:.14;
+  animation:rise linear infinite;
 }
 
-@keyframes rise {
-  from { transform: translateY(140vh); }
-  to { transform: translateY(-280vh); }
+@keyframes rise{
+  from{transform:translateY(150vh)}
+  to{transform:translateY(-320vh)}
 }
 
 /* ======================
    HEADER
 ====================== */
-header {
-  position: relative;
-  z-index: 3;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  position:relative;
+  z-index:3;
+  padding:2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  font-weight: 700;
-  letter-spacing: 1px;
+.logo{font-weight:700;letter-spacing:1px}
+
+nav a{
+  margin-left:1rem;
+  padding:.6rem 1.4rem;
+  border-radius:12px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  transition:.35s;
 }
 
-nav a {
-  margin-left: 1rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 12px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  color: #fff;
-  text-decoration: none;
-  transition: 0.35s;
-}
-
-nav a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(77,163,255,0.6);
+nav a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 20px rgba(77,163,255,.6);
 }
 
 /* ======================
    GUIDE CONTAINER
 ====================== */
-.guide {
-  position: relative;
-  z-index: 2;
-  max-width: 960px;
-  margin: 3rem auto 6rem;
-  padding: 3.6rem 3.8rem;
-  background: linear-gradient(
+.guide{
+  position:relative;
+  z-index:2;
+  max-width:1000px;
+  margin:3.5rem auto 7rem;
+  padding:4rem 4.2rem;
+  background:linear-gradient(
     135deg,
-    rgba(255,255,255,0.12),
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.12)
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.14)
   );
-  border: 1px solid var(--border);
-  border-radius: 32px;
-  backdrop-filter: blur(24px);
+  border-radius:36px;
+  border:1px solid var(--border);
+  backdrop-filter:blur(26px);
   box-shadow:
-    0 0 120px rgba(77,163,255,0.25),
-    inset 0 0 40px rgba(255,255,255,0.06);
-  animation: pageEnter 1s ease;
+    0 0 140px rgba(77,163,255,.28),
+    inset 0 0 50px rgba(255,255,255,.06);
+  animation:containerIn 1s ease;
 }
 
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: none; }
+@keyframes containerIn{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:none}
 }
 
 /* SCANLINE */
-.guide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
+.guide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
     to bottom,
     transparent,
-    rgba(255,255,255,0.15),
+    rgba(255,255,255,.18),
     transparent
   );
-  animation: scan 6s linear infinite;
-  pointer-events: none;
+  animation:scan 7s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes scan {
-  from { transform: translateY(-120%); }
-  to { transform: translateY(120%); }
+@keyframes scan{
+  from{transform:translateY(-130%)}
+  to{transform:translateY(130%)}
 }
 
 /* ======================
-   TEXT
+   TITLES
 ====================== */
-.guide h1 {
-  font-size: clamp(2.8rem, 5vw, 3.4rem);
-  font-weight: 900;
-  background: linear-gradient(180deg,#fff,var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 60px rgba(140,198,255,0.9);
-  margin-bottom: 1.4rem;
+.guide h1{
+  font-size:clamp(3rem,6vw,3.8rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 70px rgba(140,198,255,1);
+  margin-bottom:1.6rem;
 }
 
-.intro {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 2.4rem;
+.intro{
+  font-size:1.08rem;
+  line-height:1.85;
+  color:rgba(255,255,255,.9);
+  margin-bottom:3rem;
 }
 
 /* ======================
    SECTIONS
 ====================== */
-.section {
-  margin-top: 3.2rem;
-  animation: fadeUp 0.8s ease both;
+.section{
+  margin-top:3.8rem;
+  animation:fadeUp .9s ease both;
 }
 
-.section h2 {
-  font-size: 1.7rem;
-  margin-bottom: 1rem;
-  color: var(--blue);
+.section h2{
+  font-size:1.75rem;
+  color:var(--blue);
+  margin-bottom:1.2rem;
 }
 
-.section p {
-  margin-bottom: 0.8rem;
-  color: rgba(255,255,255,0.8);
+.section p{
+  margin-bottom:.8rem;
+  color:rgba(255,255,255,.85);
 }
 
-.section ol {
-  margin-left: 1.6rem;
+.section ol{
+  margin-left:1.8rem;
 }
 
-.section li {
-  margin-bottom: 0.9rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.88);
+.section li{
+  margin-bottom:1rem;
+  line-height:1.8;
+  color:rgba(255,255,255,.9);
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* ======================
-   CALLOUT BOXES
-====================== */
-.callout {
-  margin-top: 1.8rem;
-  padding: 1.4rem 1.6rem;
-  border-radius: 18px;
-  background: rgba(77,163,255,0.16);
-  border: 1px solid rgba(77,163,255,0.4);
-  color: #fff;
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
 }
 
 /* ======================
-   FINAL NOTICE
+   CALLOUT / WARNINGS
 ====================== */
-.final {
-  margin-top: 3.5rem;
-  padding: 1.8rem;
-  border-radius: 22px;
-  background: linear-gradient(
+.callout{
+  margin-top:1.6rem;
+  padding:1.6rem 1.8rem;
+  border-radius:20px;
+  background:rgba(77,163,255,.18);
+  border:1px solid rgba(77,163,255,.45);
+  font-weight:600;
+}
+
+.warning{
+  margin-top:1.6rem;
+  padding:1.6rem 1.8rem;
+  border-radius:20px;
+  background:rgba(255,80,80,.15);
+  border:1px solid rgba(255,80,80,.45);
+  font-weight:700;
+}
+
+/* ======================
+   FINAL CONFIRMATION
+====================== */
+.final{
+  margin-top:4.5rem;
+  padding:2.2rem;
+  border-radius:26px;
+  background:linear-gradient(
     135deg,
-    rgba(77,163,255,0.3),
-    rgba(77,163,255,0.15)
+    rgba(77,163,255,.35),
+    rgba(77,163,255,.18)
   );
-  border: 1px solid rgba(77,163,255,0.6);
-  font-weight: 800;
-  text-align: center;
-  animation: glow 3s ease-in-out infinite;
+  border:1px solid rgba(77,163,255,.6);
+  text-align:center;
+  font-size:1.25rem;
+  font-weight:900;
+  animation:finalGlow 3s ease-in-out infinite;
 }
 
-@keyframes glow {
-  0%,100% { box-shadow: 0 0 30px rgba(77,163,255,0.5); }
-  50% { box-shadow: 0 0 70px rgba(77,163,255,1); }
+@keyframes finalGlow{
+  0%,100%{box-shadow:0 0 40px rgba(77,163,255,.6)}
+  50%{box-shadow:0 0 90px rgba(77,163,255,1)}
 }
 
 /* ======================
    FOOTER
 ====================== */
-footer {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.85rem;
+footer{
+  text-align:center;
+  margin-bottom:2rem;
+  color:rgba(255,255,255,.5);
+  font-size:.85rem;
 }
 </style>
 </head>
@@ -240,12 +242,12 @@ footer {
 
 <div class="bg">
   <script>
-    for(let i=0;i<120;i++){
+    for(let i=0;i<150;i++){
       document.write(`
         <span style="
           left:${Math.random()*100}%;
-          animation-duration:${8+Math.random()*14}s;
-          animation-delay:${-Math.random()*25}s;
+          animation-duration:${10+Math.random()*18}s;
+          animation-delay:${-Math.random()*30}s;
         "></span>
       `);
     }
@@ -266,42 +268,49 @@ footer {
   <h1>MFA Secure Guide</h1>
 
   <p class="intro">
-    This document explains how to fully secure your Microsoft / Minecraft
-    account using MFA. Follow each step carefully and do not skip any section.
-    Security mistakes are permanent and may result in account loss.
+    This is the official Sky Market MFA security manual.
+    Follow every step carefully. Skipping steps, rushing,
+    or ignoring warnings can permanently lock your account.
+    Security is not optional — it is mandatory.
   </p>
 
   <div class="section">
-    <h2>Changing the Email</h2>
+    <h2>1. Changing the Email</h2>
     <ol>
-      <li>Login to the account.</li>
-      <li>Go to <strong>account.live.com/proofs/manage</strong>.</li>
+      <li>Login to the account normally.</li>
+      <li>Visit <strong>account.live.com/proofs/manage</strong>.</li>
       <li>Enter the provided email address.</li>
-      <li>If asked for a code, use <strong>Other ways to sign in</strong>.</li>
+      <li>If prompted for a code, select <strong>Other ways to sign in</strong>.</li>
     </ol>
-    <div class="callout">Take your time here — rushing increases mistakes.</div>
+    <div class="callout">
+      Always double-check the email you enter. Typos cause account locks.
+    </div>
   </div>
 
   <div class="section">
-    <h2>Password Recovery</h2>
+    <h2>2. Recovering the Password</h2>
     <ol>
-      <li>Select <strong>Forgot password?</strong>.</li>
-      <li>Choose <strong>I don’t have any of these</strong>.</li>
-      <li>If unavailable, try Xbox.com or a US VPN.</li>
+      <li>Click <strong>Forgot password?</strong>.</li>
+      <li>Select <strong>I don’t have any of these</strong>.</li>
+      <li>If missing, try Xbox.com or a US VPN.</li>
     </ol>
   </div>
 
   <div class="section">
-    <h2>Using Recovery Code</h2>
+    <h2>3. Using the Recovery Code</h2>
     <ol>
       <li>Paste the 25-character recovery code.</li>
-      <li>Confirm and change the password.</li>
-      <li>Update the security email immediately.</li>
+      <li>Confirm recovery.</li>
+      <li>Change password immediately.</li>
+      <li>Update security email.</li>
     </ol>
+    <div class="warning">
+      Never share recovery codes. Sky Market staff will never ask for them.
+    </div>
   </div>
 
   <div class="section">
-    <h2>Two-Step Verification</h2>
+    <h2>4. Enabling Two-Step Verification</h2>
     <ol>
       <li>Add an authenticator app.</li>
       <li>Enable two-step verification.</li>
@@ -310,21 +319,22 @@ footer {
   </div>
 
   <div class="section">
-    <h2>Final Lockdown</h2>
+    <h2>5. Final Account Lockdown</h2>
     <ol>
       <li>Remove all devices.</li>
       <li>Revoke app permissions.</li>
       <li>Sign out everywhere.</li>
+      <li>Reset Windows Hello.</li>
     </ol>
   </div>
 
   <div class="final">
-    ✓ Your account is now fully secured with MFA.
+    ✓ MFA COMPLETE — Your account is now fully secured
   </div>
 </main>
 
 <footer>
-  © Sky Market — Security First
+  © Sky Market — Security Above Everything
 </footer>
 
 </body>
