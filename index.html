@@ -6,199 +6,208 @@
 <title>Sky Market</title>
 
 <style>
-:root {
-  --blue: #8cc6ff;
-  --blue-strong: #4da3ff;
-  --glass: rgba(255,255,255,0.09);
-  --border: rgba(255,255,255,0.2);
+:root{
+  --blue:#8cc6ff;
+  --blue-strong:#4da3ff;
+  --glass:rgba(255,255,255,0.1);
+  --border:rgba(255,255,255,0.2);
 }
 
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, "Segoe UI", sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Segoe UI",sans-serif}
 
-body {
-  min-height: 100vh;
+body{
+  min-height:100vh;
   background:
     radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
-  overflow-x: hidden;
-  color: #fff;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* ======================
-   BACKGROUND
+   BACKGROUND ENERGY
 ====================== */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
-.bg span {
-  position: absolute;
-  width: 2px;
-  height: 220px;
-  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
-  opacity: 0.16;
-  animation: rise linear infinite;
+.bg span{
+  position:absolute;
+  width:2px;
+  height:260px;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:.15;
+  animation:rise linear infinite;
 }
 
-@keyframes rise {
-  from { transform: translateY(130vh); }
-  to { transform: translateY(-230vh); }
+@keyframes rise{
+  from{transform:translateY(140vh)}
+  to{transform:translateY(-260vh)}
 }
 
 /* ======================
    HEADER
 ====================== */
-header {
-  position: relative;
-  z-index: 3;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  position:relative;
+  z-index:4;
+  padding:2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  font-weight: 700;
-  letter-spacing: 1px;
+.logo{font-weight:700;letter-spacing:1px}
+
+nav{
+  display:flex;
+  gap:1rem;
 }
 
-nav {
-  display: flex;
-  gap: 1rem;
+nav a{
+  padding:.7rem 1.7rem;
+  border-radius:14px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  transition:.35s;
 }
 
-nav a {
-  padding: 0.7rem 1.7rem;
-  border-radius: 14px;
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  border: 1px solid var(--border);
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: 0.4s;
-}
-
-nav a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+nav a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 30px rgba(77,163,255,.7);
 }
 
 /* ======================
    HERO
 ====================== */
-.hero {
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.hero-box {
-  width: min(960px, 92%);
-  padding: 4.5rem 3.5rem;
-  border-radius: 32px;
-  background: linear-gradient(
+.hero-box{
+  width:min(1000px,94%);
+  padding:5rem 4rem;
+  border-radius:36px;
+  background:linear-gradient(
     135deg,
-    rgba(255,255,255,0.14),
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.14)
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.18)
   );
-  backdrop-filter: blur(26px);
-  border: 1px solid var(--border);
-  box-shadow: 0 0 100px rgba(77,163,255,0.35);
-  animation: floatBox 9s ease-in-out infinite;
-  text-align: center;
+  backdrop-filter:blur(28px);
+  border:1px solid var(--border);
+  box-shadow:
+    0 0 140px rgba(77,163,255,.35),
+    inset 0 0 45px rgba(255,255,255,.08);
+  animation:floatHero 10s ease-in-out infinite;
+  text-align:center;
+  transition:transform .15s ease;
 }
 
-@keyframes floatBox {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+@keyframes floatHero{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-16px)}
 }
 
-.hero h1 {
-  font-size: clamp(4.5rem, 9vw, 8rem);
-  font-weight: 900;
-  background: linear-gradient(180deg, #fff, var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 80px rgba(140,198,255,0.9);
+.hero h1{
+  font-size:clamp(5rem,9vw,8.5rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 90px rgba(140,198,255,1);
 }
 
-.hero h2 {
-  margin-top: 1.2rem;
-  color: rgba(255,255,255,0.75);
+.hero h2{
+  margin-top:1.4rem;
+  font-size:1.3rem;
+  letter-spacing:1px;
+  color:rgba(255,255,255,.8);
 }
 
-.hero p {
-  margin-top: 1.2rem;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.7;
+.hero p{
+  margin-top:1.4rem;
+  max-width:760px;
+  margin-inline:auto;
+  line-height:1.8;
+  color:rgba(255,255,255,.75);
 }
 
 /* ======================
-   INFO SECTION
+   INFO
 ====================== */
-.info {
-  position: relative;
-  z-index: 2;
-  padding: 6rem 3rem;
+.info{
+  position:relative;
+  z-index:2;
+  padding:7rem 3rem;
 }
 
-.info-grid {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 2.5rem;
+.info-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2.8rem;
 }
 
-.info-card {
-  padding: 2.8rem 2.2rem;
-  border-radius: 28px;
-  background: var(--glass);
-  backdrop-filter: blur(22px);
-  border: 1px solid var(--border);
-  box-shadow: 0 0 80px rgba(77,163,255,0.25);
-  animation: floatCard 8s ease-in-out infinite;
+.info-card{
+  position:relative;
+  padding:3rem 2.6rem;
+  border-radius:32px;
+  background:var(--glass);
+  backdrop-filter:blur(24px);
+  border:1px solid var(--border);
+  box-shadow:0 0 100px rgba(77,163,255,.28);
+  transition:transform .15s ease, box-shadow .3s ease;
+  cursor:pointer;
 }
 
-@keyframes floatCard {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.info-card::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:36px;
+  background:linear-gradient(120deg,transparent,var(--blue-strong),transparent);
+  opacity:.25;
+  filter:blur(24px);
+  z-index:-1;
 }
 
-.info-card h3 {
-  font-size: 1.5rem;
-  background: linear-gradient(180deg,#fff,var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+.info-card:hover{
+  box-shadow:0 0 160px rgba(77,163,255,.5);
 }
 
-.info-card p {
-  color: rgba(255,255,255,0.75);
-  line-height: 1.6;
+.info-card h3{
+  font-size:1.6rem;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:1rem;
+}
+
+.info-card p{
+  line-height:1.7;
+  color:rgba(255,255,255,.78);
 }
 
 /* ======================
    FOOTER
 ====================== */
-footer {
-  padding: 2rem;
-  text-align: center;
-  color: rgba(255,255,255,0.5);
+footer{
+  padding:2rem;
+  text-align:center;
+  color:rgba(255,255,255,.5);
 }
 </style>
 </head>
@@ -206,13 +215,17 @@ footer {
 <body>
 
 <div class="bg">
-  <script>
-    for(let i=0;i<100;i++){
-      document.write(`<span style="left:${Math.random()*100}%;
-      animation-duration:${6+Math.random()*12}s;
-      animation-delay:${-Math.random()*20}s;"></span>`);
-    }
-  </script>
+<script>
+for(let i=0;i<120;i++){
+  document.write(`
+    <span style="
+      left:${Math.random()*100}%;
+      animation-duration:${8+Math.random()*14}s;
+      animation-delay:${-Math.random()*25}s;
+    "></span>
+  `);
+}
+</script>
 </div>
 
 <header>
@@ -226,12 +239,13 @@ footer {
 </header>
 
 <main class="hero">
-  <div class="hero-box">
+  <div class="hero-box tilt">
     <h1>Sky Market</h1>
-    <h2>Secure • Trusted • Best Purchasing Hub</h2>
+    <h2>Secure • Trusted • Premium Marketplace</h2>
     <p>
-      A secure marketplace where buyers and sellers meet safely,
-      backed by a trusted middleman system and verified community.
+      Sky Market is a protected trading hub where verified buyers
+      and sellers connect safely using a trusted middleman system,
+      clear security guides, and an active community.
     </p>
   </div>
 </main>
@@ -239,27 +253,27 @@ footer {
 <section class="info">
   <div class="info-grid">
 
-    <div class="info-card">
-      <h3>Secure Trading</h3>
+    <div class="info-card tilt">
+      <h3>Secure Guide</h3>
       <p>
-        Learn how to trade safely using our Secure Guide.
-        Avoid scams and understand the full middleman process.
+        Step-by-step instructions to fully secure your account,
+        enable MFA, and avoid common scams.
       </p>
     </div>
 
-    <div class="info-card">
-      <h3>Buyer Slots</h3>
+    <div class="info-card tilt">
+      <h3>Buyer & Seller Slots</h3>
       <p>
-        Buyers can easily find verified sellers,
-        compare offers, and complete transactions securely.
+        Dedicated slots where buyers meet sellers,
+        compare offers, and trade safely.
       </p>
     </div>
 
-    <div class="info-card">
-      <h3>Seller Slots</h3>
+    <div class="info-card tilt">
+      <h3>Trusted Middleman</h3>
       <p>
-        Sellers can meet active buyers,
-        list products, and complete deals with full protection.
+        Every transaction is protected by a verified
+        Sky Market middleman service.
       </p>
     </div>
 
@@ -269,6 +283,23 @@ footer {
 <footer>
   © Made By Hynoxi | discord.gg/skymart
 </footer>
+
+<script>
+/* CURSOR PARALLAX */
+document.querySelectorAll(".tilt").forEach(el=>{
+  el.addEventListener("mousemove",e=>{
+    const r=el.getBoundingClientRect();
+    const x=e.clientX-r.left;
+    const y=e.clientY-r.top;
+    const rx=(y/r.height-.5)*-10;
+    const ry=(x/r.width-.5)*10;
+    el.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  el.addEventListener("mouseleave",()=>{
+    el.style.transform="rotateX(0) rotateY(0)";
+  });
+});
+</script>
 
 </body>
 </html>
