@@ -6,218 +6,232 @@
 <title>Contact — Sky Market</title>
 
 <style>
-:root {
-  --blue: #8cc6ff;
-  --blue-strong: #4da3ff;
-  --glass: rgba(255,255,255,0.09);
-  --border: rgba(255,255,255,0.2);
+:root{
+  --blue:#8cc6ff;
+  --blue-strong:#4da3ff;
+  --glass:rgba(255,255,255,0.1);
+  --border:rgba(255,255,255,0.2);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, "Segoe UI", sans-serif;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Segoe UI",sans-serif}
 
-body {
-  min-height: 100vh;
+body{
+  min-height:100vh;
   background:
     radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
-  overflow: hidden;
-  color: #fff;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* ======================
-   BACKGROUND MOTION
+   BACKGROUND ENERGY
 ====================== */
-.bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
-.bg span {
-  position: absolute;
-  width: 2px;
-  height: 220px;
-  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
-  opacity: 0.16;
-  animation: rise linear infinite;
+.bg span{
+  position:absolute;
+  width:2px;
+  height:260px;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:.15;
+  animation:rise linear infinite;
 }
 
-@keyframes rise {
-  from { transform: translateY(130vh); }
-  to { transform: translateY(-230vh); }
+@keyframes rise{
+  from{transform:translateY(140vh)}
+  to{transform:translateY(-260vh)}
 }
 
 /* ======================
    HEADER
 ====================== */
-header {
-  position: relative;
-  z-index: 3;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  position:relative;
+  z-index:4;
+  padding:2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  font-weight: 700;
-  letter-spacing: 1px;
+.logo{font-weight:700;letter-spacing:1px}
+
+nav{
+  display:flex;
+  gap:1rem;
 }
 
-nav {
-  display: flex;
-  gap: 1rem;
+nav a{
+  padding:.7rem 1.7rem;
+  border-radius:14px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  transition:.35s;
 }
 
-nav a {
-  padding: 0.7rem 1.7rem;
-  border-radius: 14px;
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  border: 1px solid var(--border);
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: 0.4s;
-}
-
-nav a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+nav a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 30px rgba(77,163,255,.7);
 }
 
 /* ======================
-   CONTACT SECTION
+   CONTACT
 ====================== */
-.contact {
-  position: relative;
-  z-index: 2;
-  height: calc(100vh - 140px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.contact{
+  position:relative;
+  z-index:2;
+  padding:6rem 3rem;
 }
 
-.contact-wrapper {
-  width: min(1100px, 94%);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+.contact-header{
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 4rem;
 }
 
-.card {
-  position: relative;
-  padding: 3rem 2.4rem;
-  border-radius: 28px;
-  background: linear-gradient(
+.contact-header h1{
+  font-size:clamp(3.5rem,7vw,5rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 70px rgba(140,198,255,1);
+}
+
+.contact-header p{
+  margin-top:1.4rem;
+  color:rgba(255,255,255,.75);
+  line-height:1.8;
+}
+
+/* GRID */
+.contact-wrapper{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2.6rem;
+}
+
+/* CARD */
+.card{
+  position:relative;
+  padding:3.2rem 2.8rem;
+  border-radius:34px;
+  background:linear-gradient(
     135deg,
-    rgba(255,255,255,0.14),
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.14)
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.18)
   );
-  backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
+  backdrop-filter:blur(26px);
+  border:1px solid var(--border);
   box-shadow:
-    0 0 80px rgba(77,163,255,0.25),
-    inset 0 0 35px rgba(255,255,255,0.07);
-  animation: floatCard 8s ease-in-out infinite;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+    0 0 120px rgba(77,163,255,.3),
+    inset 0 0 45px rgba(255,255,255,.08);
+  transition:transform .15s ease, box-shadow .3s ease;
+  cursor:pointer;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 120px rgba(77,163,255,0.45);
+.card::after{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:38px;
+  background:linear-gradient(120deg,transparent,var(--blue-strong),transparent);
+  filter:blur(26px);
+  opacity:.25;
+  z-index:-1;
 }
 
-@keyframes floatCard {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-/* Scanline */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
+/* SCANLINE */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
     to bottom,
     transparent,
-    rgba(255,255,255,0.18),
+    rgba(255,255,255,.18),
     transparent
   );
-  animation: scan 5s linear infinite;
-  pointer-events: none;
+  animation:scan 6s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes scan {
-  from { transform: translateY(-120%); }
-  to { transform: translateY(120%); }
+@keyframes scan{
+  from{transform:translateY(-130%)}
+  to{transform:translateY(130%)}
 }
 
-.card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 40px rgba(140,198,255,0.8);
+.card:hover{
+  box-shadow:0 0 180px rgba(77,163,255,.55);
 }
 
-.card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.75);
-  margin-bottom: 1.2rem;
+.card h2{
+  font-size:1.9rem;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:1rem;
 }
 
-.card a {
-  display: inline-block;
-  margin-top: 0.6rem;
-  color: var(--blue);
-  text-decoration: none;
-  font-weight: 600;
+.card p{
+  color:rgba(255,255,255,.8);
+  line-height:1.7;
+  margin-bottom:.8rem;
 }
 
-.card a:hover {
-  text-decoration: underline;
+.card a{
+  display:inline-block;
+  margin-top:1.2rem;
+  padding:.7rem 1.6rem;
+  border-radius:999px;
+  background:rgba(77,163,255,.25);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 0 30px rgba(77,163,255,.7);
+}
+
+.card a:hover{
+  box-shadow:0 0 60px rgba(77,163,255,1);
 }
 
 /* ======================
    FOOTER
 ====================== */
-footer {
-  position: absolute;
-  bottom: 1.5rem;
-  width: 100%;
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  z-index: 2;
+footer{
+  padding:2.5rem;
+  text-align:center;
+  color:rgba(255,255,255,.5);
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND EFFECT -->
 <div class="bg">
-  <script>
-    for (let i = 0; i < 90; i++) {
-      document.write(`
-        <span style="
-          left:${Math.random() * 100}%;
-          animation-duration:${6 + Math.random() * 12}s;
-          animation-delay:${-Math.random() * 20}s;
-        "></span>
-      `);
-    }
-  </script>
+<script>
+for(let i=0;i<120;i++){
+  document.write(`
+    <span style="
+      left:${Math.random()*100}%;
+      animation-duration:${8+Math.random()*14}s;
+      animation-delay:${-Math.random()*25}s;
+    "></span>
+  `);
+}
+</script>
 </div>
 
 <header>
@@ -226,47 +240,52 @@ footer {
     <a href="index.html">Home</a>
     <a href="middleman.html">Middleman</a>
     <a href="market.html">Market</a>
+    <a href="secure.html">Secure Guide</a>
   </nav>
 </header>
 
 <main class="contact">
+  <div class="contact-header">
+    <h1>Contact Us</h1>
+    <p>
+      Need help, support, or want to start a trade?
+      Sky Market staff are available on multiple platforms.
+      Always use official contacts listed below.
+    </p>
+  </div>
+
   <div class="contact-wrapper">
 
-    <!-- DISCORD -->
-    <div class="card">
+    <div class="card tilt">
       <h2>Discord</h2>
       <p>
-        You can contact us on Discord for support, updates, and secure
-        communication.
+        Our main communication hub. Join the server for support,
+        announcements, middleman services, and verified trading.
       </p>
-      <p><strong>Server:</strong> https://discord.gg/skymart</p>
+      <p><strong>Server:</strong> discord.gg/skymart</p>
       <p><strong>Owner:</strong> Hynoxi</p>
       <a href="https://discord.gg/skymart" target="_blank">Join Discord</a>
     </div>
 
-    <!-- TELEGRAM -->
-    <div class="card">
+    <div class="card tilt">
       <h2>Telegram</h2>
       <p>
-        Reach out to us directly on Telegram for fast responses and
-        private inquiries.
+        Direct contact for fast replies and private discussions.
+        Ideal for quick questions and confirmations.
       </p>
       <p>t.me/hynoxi</p>
       <p>t.me/skymart</p>
       <a href="https://t.me/hynoxi" target="_blank">Open Telegram</a>
     </div>
 
-    <!-- INSTAGRAM -->
-    <div class="card">
+    <div class="card tilt">
       <h2>Instagram</h2>
       <p>
-        Follow and contact us on Instagram for announcements and
-        updates.
+        Follow us for updates, announcements,
+        and important notices from Sky Market.
       </p>
       <p>@hynoxi</p>
-      <a href="https://instagram.com/hynoxi" target="_blank">
-        Visit Instagram
-      </a>
+      <a href="https://instagram.com/hynoxi" target="_blank">Visit Instagram</a>
     </div>
 
   </div>
@@ -275,6 +294,23 @@ footer {
 <footer>
   © Made By Hynoxi | discord.gg/skymart
 </footer>
+
+<script>
+/* CURSOR TILT */
+document.querySelectorAll(".tilt").forEach(el=>{
+  el.addEventListener("mousemove",e=>{
+    const r=el.getBoundingClientRect();
+    const x=e.clientX-r.left;
+    const y=e.clientY-r.top;
+    const rx=(y/r.height-.5)*-10;
+    const ry=(x/r.width-.5)*10;
+    el.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  el.addEventListener("mouseleave",()=>{
+    el.style.transform="rotateX(0) rotateY(0)";
+  });
+});
+</script>
 
 </body>
 </html>
