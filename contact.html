@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Sky Market</title>
+
+<style>
+:root {
+  --blue: #8cc6ff;
+  --blue-strong: #4da3ff;
+  --glass: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
+    radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
+  overflow: hidden;
+  color: #fff;
+}
+
+/* ======================
+   BACKGROUND MOTION
+====================== */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg span {
+  position: absolute;
+  width: 2px;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity: 0.16;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(130vh); }
+  to { transform: translateY(-230vh); }
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  padding: 0.7rem 1.7rem;
+  border-radius: 14px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+}
+
+/* ======================
+   CONTACT SECTION
+====================== */
+.contact {
+  position: relative;
+  z-index: 2;
+  height: calc(100vh - 140px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-wrapper {
+  width: min(1100px, 94%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  position: relative;
+  padding: 3rem 2.4rem;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.14)
+  );
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 80px rgba(77,163,255,0.25),
+    inset 0 0 35px rgba(255,255,255,0.07);
+  animation: floatCard 8s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 120px rgba(77,163,255,0.45);
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Scanline */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(120%); }
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #ffffff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(140,198,255,0.8);
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1.2rem;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ======================
+   FOOTER
+====================== */
+footer {
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  z-index: 2;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND EFFECT -->
+<div class="bg">
+  <script>
+    for (let i = 0; i < 90; i++) {
+      document.write(`
+        <span style="
+          left:${Math.random() * 100}%;
+          animation-duration:${6 + Math.random() * 12}s;
+          animation-delay:${-Math.random() * 20}s;
+        "></span>
+      `);
+    }
+  </script>
+</div>
+
+<header>
+  <div class="logo">SKY</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="middleman.html">Middleman</a>
+    <a href="market.html">Market</a>
+  </nav>
+</header>
+
+<main class="contact">
+  <div class="contact-wrapper">
+
+    <!-- DISCORD -->
+    <div class="card">
+      <h2>Discord</h2>
+      <p>
+        You can contact us on Discord for support, updates, and secure
+        communication.
+      </p>
+      <p><strong>Server:</strong> https://discord.gg/skymart</p>
+      <p><strong>Owner:</strong> Hynoxi</p>
+      <a href="https://discord.gg/skymart" target="_blank">Join Discord</a>
+    </div>
+
+    <!-- TELEGRAM -->
+    <div class="card">
+      <h2>Telegram</h2>
+      <p>
+        Reach out to us directly on Telegram for fast responses and
+        private inquiries.
+      </p>
+      <p>t.me/hynoxi</p>
+      <p>t.me/skymart</p>
+      <a href="https://t.me/hynoxi" target="_blank">Open Telegram</a>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="card">
+      <h2>Instagram</h2>
+      <p>
+        Follow and contact us on Instagram for announcements and
+        updates.
+      </p>
+      <p>@hynoxi</p>
+      <a href="https://instagram.com/hynoxi" target="_blank">
+        Visit Instagram
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 Sky Market — All Rights Reserved
+</footer>
+
+</body>
+</html>
