@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Secure Guide — Sky Market</title>
+
+<style>
+:root {
+  --blue: #8cc6ff;
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
+    radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav a {
+  margin-left: 1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ======================
+   GUIDE CONTAINER
+====================== */
+.guide {
+  max-width: 900px;
+  margin: 3rem auto 6rem;
+  padding: 3rem;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  backdrop-filter: blur(20px);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.guide h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.guide p {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+/* ======================
+   SECTIONS
+====================== */
+.section {
+  margin-top: 2.8rem;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--blue);
+}
+
+.section ul {
+  margin-left: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.section li {
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ======================
+   HIGHLIGHT BOX
+====================== */
+.notice {
+  margin-top: 2rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(77,163,255,0.15);
+  border: 1px solid rgba(77,163,255,0.4);
+  color: #fff;
+}
+
+/* ======================
+   FOOTER
+====================== */
+footer {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SKY</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="middleman.html">Middleman</a>
+    <a href="market.html">Market</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="guide">
+  <h1>Secure Trading Guide</h1>
+
+  <p>
+    This guide explains how to trade safely on Sky Market.
+    Please read carefully before making any transaction.
+  </p>
+
+  <div class="section">
+    <h2>1. Always Use the Middleman</h2>
+    <ul>
+      <li>Never trade directly with unknown users.</li>
+      <li>Use Sky Market’s official middleman service.</li>
+      <li>Middleman ensures both buyer and seller are protected.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Verify Official Contacts</h2>
+    <ul>
+      <li>Only trust contacts listed on the Sky Market website.</li>
+      <li>Fake staff and impersonators are common.</li>
+      <li>If unsure, ask for verification in the Discord server.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Payment Safety</h2>
+    <ul>
+      <li>Sky Market uses crypto-only payments.</li>
+      <li>Never send funds before middleman confirmation.</li>
+      <li>Double-check wallet addresses.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Account Delivery</h2>
+    <ul>
+      <li>Accounts must be delivered through the middleman.</li>
+      <li>Verify access before confirming completion.</li>
+      <li>Change all credentials immediately after receiving.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Common Scams to Avoid</h2>
+    <ul>
+      <li>Users asking to skip middleman.</li>
+      <li>Fake Discord servers or copied usernames.</li>
+      <li>Pressure tactics or limited-time threats.</li>
+    </ul>
+  </div>
+
+  <div class="notice">
+    ⚠️ If anything feels suspicious, stop immediately and contact
+    Sky Market staff through the official Discord server.
+  </div>
+</main>
+
+<footer>
+  © Sky Market — Secure Trading Guide
+</footer>
+
+</body>
+</html>
