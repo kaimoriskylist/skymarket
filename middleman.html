@@ -27,13 +27,19 @@ body {
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
   overflow-x: hidden;
   color: #fff;
+  animation: pageIn 0.9s ease forwards;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ======================
    BACKGROUND MOTION
 ====================== */
 .bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
 }
@@ -41,15 +47,15 @@ body {
 .bg span {
   position: absolute;
   width: 2px;
-  height: 220px;
+  height: 240px;
   background: linear-gradient(to bottom, transparent, var(--blue), transparent);
   opacity: 0.16;
   animation: rise linear infinite;
 }
 
 @keyframes rise {
-  from { transform: translateY(130vh); }
-  to { transform: translateY(-230vh); }
+  from { transform: translateY(140vh); }
+  to { transform: translateY(-260vh); }
 }
 
 /* ======================
@@ -82,16 +88,17 @@ nav a {
   border: 1px solid var(--border);
   color: #fff;
   text-decoration: none;
-  transition: 0.4s;
+  transition: 0.35s;
 }
 
+nav a:active,
 nav a:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(77,163,255,0.7);
 }
 
 /* ======================
-   MIDDLEMAN SECTION
+   MIDDLEMAN
 ====================== */
 .middleman {
   position: relative;
@@ -99,31 +106,31 @@ nav a:hover {
   padding: 4rem 3rem 6rem;
 }
 
+/* TITLES */
 .mm-header {
-  max-width: 900px;
-  margin: 0 auto 3.5rem;
   text-align: center;
+  margin-bottom: 4rem;
 }
 
-.mm-header h1 {
-  font-size: clamp(3rem, 7vw, 5rem);
+.mm-header .big {
+  font-size: clamp(4.5rem, 9vw, 8rem);
   font-weight: 900;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
+  letter-spacing: 3px;
+  background: linear-gradient(180deg, #fff, var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 70px rgba(140,198,255,0.9);
+  text-shadow: 0 0 90px rgba(140,198,255,1);
 }
 
-.mm-header p {
-  margin-top: 1.2rem;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.7;
+.mm-header .sub {
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.7);
 }
 
-/* ======================
-   CONTENT GRID
-====================== */
+/* GRID */
 .mm-grid {
   max-width: 1100px;
   margin: 0 auto;
@@ -139,35 +146,29 @@ nav a:hover {
   border-radius: 28px;
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.14),
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.14)
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.15)
   );
   backdrop-filter: blur(26px);
   border: 1px solid var(--border);
   box-shadow:
-    0 0 80px rgba(77,163,255,0.25),
+    0 0 90px rgba(77,163,255,0.28),
     inset 0 0 35px rgba(255,255,255,0.07);
   animation: floatCard 9s ease-in-out infinite;
 }
 
 @keyframes floatCard {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
 }
 
-/* Scanline */
 .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
-  );
-  animation: scan 5s linear infinite;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+  animation: scan 4.8s linear infinite;
   pointer-events: none;
 }
 
@@ -179,45 +180,35 @@ nav a:hover {
 .card h2 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
+  background: linear-gradient(180deg, #fff, var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .card p {
-  font-size: 1rem;
-  line-height: 1.7;
   color: rgba(255,255,255,0.75);
+  line-height: 1.7;
   margin-bottom: 0.6rem;
 }
 
 /* ======================
    CALCULATOR
 ====================== */
-.calc {
-  margin-top: 1.2rem;
-}
-
 .calc input {
   width: 100%;
-  padding: 0.9rem 1.1rem;
-  border-radius: 14px;
+  padding: 1rem;
+  border-radius: 16px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.1);
   color: #fff;
-  font-size: 1rem;
-  outline: none;
-}
-
-.calc input::placeholder {
-  color: rgba(255,255,255,0.5);
+  font-size: 1.05rem;
 }
 
 .result {
-  margin-top: 1.2rem;
-  padding: 1.4rem;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
+  margin-top: 1.3rem;
+  padding: 1.6rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
   border: 1px solid var(--border);
   text-align: center;
   animation: fadeUp 0.6s ease;
@@ -225,42 +216,64 @@ nav a:hover {
 
 .result span {
   display: block;
-  font-size: 1.1rem;
   margin-top: 0.4rem;
+  font-size: 1.2rem;
   color: var(--blue);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
+}
+
+/* ======================
+   DISCORD CTA
+====================== */
+.cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.cta a {
+  display: inline-block;
+  padding: 1rem 2.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue-strong), #9ad1ff);
+  color: #000;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 0 40px rgba(77,163,255,0.9);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 30px rgba(77,163,255,0.6); }
+  50% { box-shadow: 0 0 70px rgba(77,163,255,1); }
 }
 
 /* ======================
    FOOTER
 ====================== */
 footer {
-  position: relative;
   margin-top: 5rem;
   text-align: center;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.5);
-  z-index: 2;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
 <div class="bg">
   <script>
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 100; i++) {
       document.write(`
         <span style="
-          left:${Math.random() * 100}%;
-          animation-duration:${6 + Math.random() * 12}s;
-          animation-delay:${-Math.random() * 20}s;
+          left:${Math.random()*100}%;
+          animation-duration:${6+Math.random()*12}s;
+          animation-delay:${-Math.random()*20}s;
         "></span>
       `);
     }
@@ -278,41 +291,35 @@ footer {
 
 <main class="middleman">
   <div class="mm-header">
-    <h1>Middleman Service</h1>
-    <p>
-      Our middleman service ensures secure and trusted transactions
-      between buyers and sellers.
-    </p>
+    <div class="big">SKY MARKET</div>
+    <div class="sub">MIDDLEMAN</div>
   </div>
 
   <div class="mm-grid">
 
     <div class="card">
       <h2>Service Fees</h2>
-      <p>Transactions below <strong>$10</strong> are charged a <strong>5%</strong> fee.</p>
-      <p>Transactions <strong>$10 and above</strong> are charged a <strong>2%</strong> fee.</p>
-      <p>Fees are calculated automatically and transparently.</p>
+      <p><strong>Below $10:</strong> 7% middleman fee</p>
+      <p><strong>$10 and above:</strong> 5% middleman fee</p>
+      <p>Crypto-only transactions supported.</p>
     </div>
 
     <div class="card">
       <h2>Fee Calculator</h2>
-      <p>Enter transaction amount to calculate middleman fee.</p>
+      <p>Enter transaction amount (USD equivalent).</p>
 
       <div class="calc">
-        <input
-          type="number"
-          id="amount"
-          placeholder="Enter amount in USD"
-          min="0"
-          oninput="calculateFee()"
-        />
-
-        <div class="result" id="result" style="display:none;">
-          <div>Middleman Fee</div>
+        <input type="number" id="amount" placeholder="Amount" oninput="calc()" />
+        <div class="result" id="res" style="display:none;">
+          <div>Fee</div>
           <span id="fee">$0.00</span>
-          <div>Total With Fee</div>
+          <div>Total</div>
           <span id="total">$0.00</span>
         </div>
+      </div>
+
+      <div class="cta">
+        <a href="https://discord.gg/skymart" target="_blank">Contact on Discord</a>
       </div>
     </div>
 
@@ -324,24 +331,14 @@ footer {
 </footer>
 
 <script>
-function calculateFee() {
-  const amount = parseFloat(document.getElementById("amount").value);
-  const result = document.getElementById("result");
-  const feeEl = document.getElementById("fee");
-  const totalEl = document.getElementById("total");
-
-  if (!amount || amount <= 0) {
-    result.style.display = "none";
-    return;
-  }
-
-  const rate = amount < 10 ? 0.05 : 0.02;
-  const fee = amount * rate;
-  const total = amount + fee;
-
-  feeEl.textContent = "$" + fee.toFixed(2);
-  totalEl.textContent = "$" + total.toFixed(2);
-  result.style.display = "block";
+function calc(){
+  const a = parseFloat(amount.value);
+  if(!a || a<=0){ res.style.display="none"; return; }
+  const rate = a < 10 ? 0.07 : 0.05;
+  const f = a * rate;
+  res.style.display="block";
+  fee.textContent = "$" + f.toFixed(2);
+  total.textContent = "$" + (a + f).toFixed(2);
 }
 </script>
 
