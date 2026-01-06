@@ -6,231 +6,232 @@
 <title>Sky MarketPlace</title>
 
 <style>
-:root {
-  --blue: #8cc6ff;
-  --blue-strong: #4da3ff;
-  --glass: rgba(255,255,255,0.09);
-  --border: rgba(255,255,255,0.2);
+:root{
+  --blue:#8cc6ff;
+  --blue-strong:#4da3ff;
+  --glass:rgba(255,255,255,0.12);
+  --border:rgba(255,255,255,0.2);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, "Segoe UI", sans-serif;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,"Segoe UI",sans-serif}
 
-body {
-  min-height: 100vh;
+body{
+  min-height:100vh;
   background:
     radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
-  overflow-x: hidden;
-  color: #fff;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* ======================
-   BACKGROUND MOTION
+   BACKGROUND ENERGY
 ====================== */
-.bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
-.bg span {
-  position: absolute;
-  width: 2px;
-  height: 220px;
-  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
-  opacity: 0.16;
-  animation: rise linear infinite;
+.bg span{
+  position:absolute;
+  width:2px;
+  height:260px;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:.15;
+  animation:rise linear infinite;
 }
 
-@keyframes rise {
-  from { transform: translateY(130vh); }
-  to { transform: translateY(-230vh); }
+@keyframes rise{
+  from{transform:translateY(140vh)}
+  to{transform:translateY(-260vh)}
 }
 
 /* ======================
    HEADER
 ====================== */
-header {
-  position: relative;
-  z-index: 3;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  position:relative;
+  z-index:4;
+  padding:2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  font-weight: 700;
-  letter-spacing: 1px;
+.logo{font-weight:700;letter-spacing:1px}
+
+nav a{
+  margin-left:1rem;
+  padding:.7rem 1.7rem;
+  border-radius:14px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  transition:.35s;
 }
 
-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  padding: 0.7rem 1.7rem;
-  border-radius: 14px;
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  border: 1px solid var(--border);
-  color: #fff;
-  text-decoration: none;
-  transition: 0.4s;
-}
-
-nav a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+nav a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 30px rgba(77,163,255,.7);
 }
 
 /* ======================
-   MARKET SECTION
+   MARKET
 ====================== */
-.market {
-  position: relative;
-  z-index: 2;
-  padding: 4rem 3rem 6rem;
+.market{
+  position:relative;
+  z-index:2;
+  padding:5rem 3rem 7rem;
 }
 
-.market-header {
-  max-width: 900px;
-  margin: 0 auto 4rem;
-  text-align: center;
+.market-header{
+  max-width:900px;
+  margin:0 auto 4.5rem;
+  text-align:center;
 }
 
-.market-header h1 {
-  font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 900;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 70px rgba(140,198,255,0.9);
+.market-header h1{
+  font-size:clamp(3.5rem,7vw,5.5rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 80px rgba(140,198,255,1);
 }
 
-.market-header p {
-  margin-top: 1.4rem;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.7;
+.market-header p{
+  margin-top:1.4rem;
+  line-height:1.8;
+  color:rgba(255,255,255,.78);
 }
 
 /* GRID */
-.products {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.2rem;
+.products{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:3rem;
 }
 
-/* PRODUCT CARD */
-.card {
-  position: relative;
-  padding: 2.8rem 2.3rem;
-  border-radius: 28px;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.14),
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.14)
+/* ======================
+   PRODUCT CARD
+====================== */
+.card{
+  position:relative;
+  border-radius:34px;
+  background:var(--glass);
+  backdrop-filter:blur(26px);
+  border:1px solid var(--border);
+  box-shadow:0 0 140px rgba(77,163,255,.28);
+  overflow:hidden;
+  transition:transform .15s ease, box-shadow .3s ease;
+}
+
+/* reflection */
+.card::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width:200%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,.12),
+    transparent 60%
   );
-  backdrop-filter: blur(24px);
-  border: 1px solid var(--border);
-  box-shadow:
-    0 0 80px rgba(77,163,255,0.25),
-    inset 0 0 35px rgba(255,255,255,0.07);
-  animation: floatCard 8s ease-in-out infinite;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform:rotate(25deg);
+  animation:shine 8s linear infinite;
 }
 
-.card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 0 120px rgba(77,163,255,0.45);
+@keyframes shine{
+  from{transform:translateX(-50%) rotate(25deg)}
+  to{transform:translateX(50%) rotate(25deg)}
 }
 
-@keyframes floatCard {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* IMAGE AREA */
+.card-img{
+  height:170px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(77,163,255,.5), transparent 60%),
+    linear-gradient(135deg,#0e2a5e,#06152f);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  box-shadow:inset 0 -30px 50px rgba(0,0,0,.4);
 }
 
-/* Scanline */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
-  );
-  animation: scan 5s linear infinite;
-  pointer-events: none;
+.card-img span{
+  opacity:.85;
+  text-shadow:0 0 25px rgba(140,198,255,1);
 }
 
-@keyframes scan {
-  from { transform: translateY(-120%); }
-  to { transform: translateY(120%); }
+/* CONTENT */
+.card-content{
+  padding:2.6rem 2.4rem 2.8rem;
 }
 
-.card h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.6rem;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.card h2{
+  font-size:1.6rem;
+  margin-bottom:.6rem;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.price {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--blue);
-  margin-bottom: 1rem;
+.price{
+  font-size:1.35rem;
+  font-weight:800;
+  color:var(--blue);
+  margin-bottom:1rem;
 }
 
-.card p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.75);
-  margin-bottom: 0.5rem;
+.card p{
+  font-size:.95rem;
+  line-height:1.6;
+  color:rgba(255,255,255,.8);
+  margin-bottom:.4rem;
+}
+
+.card:hover{
+  box-shadow:0 0 220px rgba(77,163,255,.6);
 }
 
 /* ======================
    FOOTER
 ====================== */
-footer {
-  position: relative;
-  margin-top: 5rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  z-index: 2;
+footer{
+  margin-top:5rem;
+  text-align:center;
+  color:rgba(255,255,255,.5);
+  font-size:.85rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
 <div class="bg">
-  <script>
-    for (let i = 0; i < 100; i++) {
-      document.write(`
-        <span style="
-          left:${Math.random() * 100}%;
-          animation-duration:${6 + Math.random() * 12}s;
-          animation-delay:${-Math.random() * 20}s;
-        "></span>
-      `);
-    }
-  </script>
+<script>
+for(let i=0;i<140;i++){
+  document.write(`
+    <span style="
+      left:${Math.random()*100}%;
+      animation-duration:${9+Math.random()*16}s;
+      animation-delay:${-Math.random()*30}s;
+    "></span>
+  `);
+}
+</script>
 </div>
 
 <header>
@@ -239,6 +240,7 @@ footer {
     <a href="index.html">Home</a>
     <a href="middleman.html">Middleman</a>
     <a href="contact.html">Contact</a>
+    <a href="secure.html">Secure Guide</a>
   </nav>
 </header>
 
@@ -246,75 +248,88 @@ footer {
   <div class="market-header">
     <h1>Sky MarketPlace</h1>
     <p>
-      We provide various products. To buy these accounts,
-      please join our Discord server:
-      <strong>discord.gg/skymart</strong>.
-      If the vanity link does not work, contact us directly.
+      A premium marketplace for verified digital products.
+      To purchase, join our Discord server: <strong>discord.gg/skymart</strong>
     </p>
   </div>
 
   <div class="products">
 
-    <div class="card">
-      <h2>Minecraft Accounts [FA]</h2>
-      <div class="price">$5</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>Full access accounts</p>
-      <p>Format: Email + recovery code</p>
-      <p>Unbanned everywhere , fore more info Contact Us</p>
+    <div class="card tilt">
+      <div class="card-img"><span>Minecraft FA</span></div>
+      <div class="card-content">
+        <h2>Minecraft Accounts [FA]</h2>
+        <div class="price">$5</div>
+        <p>Payments: LTC / BTC / SOL / USDT / USDC</p>
+        <p>Email + Recovery Code</p>
+        <p>Unbanned everywhere</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Minecraft Accounts VIP[FA]</h2>
-      <div class="price">$6</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>Full access accounts</p>
-      <p>VIP rank on Hypixel</p>
-      <p>Unbanned everywhere</p>
+    <div class="card tilt">
+      <div class="card-img"><span>VIP</span></div>
+      <div class="card-content">
+        <h2>Minecraft VIP [FA]</h2>
+        <div class="price">$6</div>
+        <p>VIP Rank on Hypixel</p>
+        <p>Full Access</p>
+        <p>Unbanned everywhere</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Minecraft Accounts VIP+[FA]</h2>
-      <div class="price">$7</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>VIP+ rank on Hypixel</p>
-      <p>Full access accounts</p>
-      <p>Unbanned everywhere</p>
+    <div class="card tilt">
+      <div class="card-img"><span>VIP+</span></div>
+      <div class="card-content">
+        <h2>Minecraft VIP+ [FA]</h2>
+        <div class="price">$7</div>
+        <p>VIP+ Rank on Hypixel</p>
+        <p>Full Access</p>
+        <p>Unbanned everywhere</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Minecraft Accounts MVP[FA]</h2>
-      <div class="price">$8</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>MVP rank on Hypixel</p>
-      <p>Full access accounts</p>
-      <p>Unbanned everywhere</p>
+    <div class="card tilt">
+      <div class="card-img"><span>MVP</span></div>
+      <div class="card-content">
+        <h2>Minecraft MVP [FA]</h2>
+        <div class="price">$8</div>
+        <p>MVP Rank on Hypixel</p>
+        <p>Full Access</p>
+        <p>Unbanned everywhere</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Minecraft Accounts MVP+[FA]</h2>
-      <div class="price">$11</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>MVP+ rank on Hypixel</p>
-      <p>Price may increase for special plus colors</p>
-      <p>Unbanned everywhere</p>
+    <div class="card tilt">
+      <div class="card-img"><span>MVP+</span></div>
+      <div class="card-content">
+        <h2>Minecraft MVP+ [FA]</h2>
+        <div class="price">$11</div>
+        <p>Special Plus Colors Available</p>
+        <p>Full Access</p>
+        <p>Unbanned everywhere</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>SkyBlock Accounts[FA]</h2>
-      <div class="price">$27 / 1B Networth</div>
-      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
-      <p>SkyBlock profile on Hypixel</p>
-      <p>Includes rare items , Old Accounts , Limited Stock</p>
-      <p>Price increases with networth</p>
+    <div class="card tilt">
+      <div class="card-img"><span>SkyBlock</span></div>
+      <div class="card-content">
+        <h2>SkyBlock Accounts [FA]</h2>
+        <div class="price">$27 / 1B</div>
+        <p>Rare Items & Old Profiles</p>
+        <p>Limited Stock</p>
+        <p>Price scales with networth</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>ChatGPT Plus[FA]</h2>
-      <div class="price">$1</div>
-      <p>Full access account</p>
-      <p>All accounts are legally paid</p>
-      <p>To buy, contact us on Discord</p>
+    <div class="card tilt">
+      <div class="card-img"><span>ChatGPT+</span></div>
+      <div class="card-content">
+        <h2>ChatGPT Plus [FA]</h2>
+        <div class="price">$1</div>
+        <p>Legally Paid Account</p>
+        <p>Full Access</p>
+        <p>Contact on Discord</p>
+      </div>
     </div>
 
   </div>
@@ -323,6 +338,25 @@ footer {
 <footer>
   © 2026 Sky Market — All Rights Reserved
 </footer>
+
+<script>
+/* CURSOR TILT */
+if(!('ontouchstart' in window)){
+  document.querySelectorAll(".tilt").forEach(el=>{
+    el.addEventListener("mousemove",e=>{
+      const r=el.getBoundingClientRect();
+      const x=e.clientX-r.left;
+      const y=e.clientY-r.top;
+      const rx=(y/r.height-.5)*-10;
+      const ry=(x/r.width-.5)*10;
+      el.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    el.addEventListener("mouseleave",()=>{
+      el.style.transform="rotateX(0) rotateY(0)";
+    });
+  });
+}
+</script>
 
 </body>
 </html>
