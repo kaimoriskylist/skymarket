@@ -6,225 +6,230 @@
 <title>Sky Market</title>
 
 <style>
-/* =====================
-   ROOT + RESET
-===================== */
 :root {
-  --blue: #4da3ff;
-  --blue-glow: rgba(77,163,255,0.55);
+  --blue: #7bb7ff;
+  --blue-strong: #4da3ff;
   --glass: rgba(255,255,255,0.08);
   --border: rgba(255,255,255,0.18);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", system-ui, sans-serif;
-}
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; font-family:system-ui,Segoe UI,sans-serif; }
 
 body {
-  min-height: 100vh;
+  min-height:100vh;
   background:
-    radial-gradient(circle at 20% 20%, #0f2a55, #050b18 70%),
-    radial-gradient(circle at 80% 80%, #102f6b, transparent 60%);
-  overflow: hidden;
-  color: #fff;
+    radial-gradient(circle at 20% 20%, #143a7a, #050b18 70%),
+    radial-gradient(circle at 80% 80%, #0b2555, transparent 60%);
+  overflow:hidden;
+  color:#fff;
 }
 
-/* =====================
-   HOLOGRAM BACKGROUND
-===================== */
-.hologram {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
+/* ======================
+   BACKGROUND MOTION
+====================== */
+.bg-particles {
+  position:absolute;
+  inset:0;
+  z-index:0;
 }
 
-.hologram span {
-  position: absolute;
-  width: 2px;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--blue),
-    transparent
-  );
-  opacity: 0.25;
-  animation: float 12s linear infinite;
+.bg-particles span {
+  position:absolute;
+  width:2px;
+  height:180px;
+  background:linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity:0.18;
+  animation: rise linear infinite;
 }
 
-@keyframes float {
-  from {
-    transform: translateY(120vh);
-  }
-  to {
-    transform: translateY(-140vh);
-  }
+@keyframes rise {
+  from { transform:translateY(120vh); }
+  to { transform:translateY(-200vh); }
 }
 
-/* generate multiple lines */
-.hologram span:nth-child(n) {
-  left: calc(1% * var(--i));
-  animation-delay: calc(-1s * var(--i));
-  animation-duration: calc(8s + var(--i) * 0.15s);
-}
-
-/* =====================
-   HEADER / NAV
-===================== */
+/* ======================
+   HEADER
+====================== */
 header {
-  position: relative;
-  z-index: 2;
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position:relative;
+  z-index:3;
+  padding:2rem 3rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
-nav {
-  display: flex;
-  gap: 1.2rem;
-}
+nav { display:flex; gap:1rem; }
 
 nav a {
-  padding: 0.7rem 1.5rem;
-  border-radius: 14px;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding:.7rem 1.6rem;
+  border-radius:14px;
+  background:var(--glass);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  color:#fff;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
 }
 
-nav a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    var(--blue-glow),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+nav a::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+  transform:translateX(-120%);
+  animation:navShine 6s infinite;
 }
 
-nav a:hover::before {
-  transform: translateX(100%);
+@keyframes navShine {
+  0%,70% { transform:translateX(-120%); }
+  85% { transform:translateX(120%); }
+  100% { transform:translateX(120%); }
 }
 
 nav a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 25px var(--blue-glow);
+  box-shadow:0 0 25px rgba(77,163,255,.6);
+  transform:translateY(-3px);
 }
 
-/* =====================
-   HERO
-===================== */
+/* ======================
+   HERO CENTER BLOCK
+====================== */
 .hero {
-  position: relative;
-  z-index: 2;
-  height: calc(100vh - 120px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  position:relative;
+  z-index:2;
+  height:calc(100vh - 140px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .hero-box {
-  padding: 4rem 5rem;
-  border-radius: 30px;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
+  position:relative;
+  width:min(900px,90%);
+  padding:4rem 3rem;
+  border-radius:28px;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,.12),
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.12)
+  );
+  backdrop-filter:blur(24px);
+  border:1px solid var(--border);
   box-shadow:
-    inset 0 0 30px rgba(255,255,255,0.05),
-    0 0 80px rgba(77,163,255,0.25);
-  animation: pulse 6s ease-in-out infinite;
+    0 0 80px rgba(77,163,255,.35),
+    inset 0 0 40px rgba(255,255,255,.08);
+  animation: boxFloat 8s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%,100% {
-    box-shadow:
-      inset 0 0 30px rgba(255,255,255,0.05),
-      0 0 80px rgba(77,163,255,0.25);
-  }
-  50% {
-    box-shadow:
-      inset 0 0 40px rgba(255,255,255,0.08),
-      0 0 120px rgba(77,163,255,0.45);
-  }
+/* FLOATING BLOCK */
+@keyframes boxFloat {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-12px); }
+}
+
+/* SCANLINE */
+.hero-box::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,.15),
+    transparent
+  );
+  animation: scan 5s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes scan {
+  from { transform:translateY(-120%); }
+  to { transform:translateY(120%); }
+}
+
+/* EDGE GLOW */
+.hero-box::after {
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:30px;
+  background:linear-gradient(120deg, transparent, var(--blue-strong), transparent);
+  opacity:.6;
+  filter:blur(20px);
+  animation: edgeGlow 6s ease-in-out infinite;
+  z-index:-1;
+}
+
+@keyframes edgeGlow {
+  0%,100% { opacity:.3; }
+  50% { opacity:.7; }
 }
 
 .hero h1 {
-  font-size: clamp(4rem, 9vw, 8rem);
-  font-weight: 900;
-  letter-spacing: 2px;
-  background: linear-gradient(
-    180deg,
-    #ffffff,
-    var(--blue)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow:
-    0 0 40px var(--blue-glow);
-  animation: glowText 4s ease-in-out infinite;
+  font-size:clamp(4rem,9vw,7.5rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 60px rgba(123,183,255,.8);
+  animation:textPulse 4s ease-in-out infinite;
 }
 
-@keyframes glowText {
-  0%,100% {
-    text-shadow: 0 0 40px var(--blue-glow);
-  }
-  50% {
-    text-shadow: 0 0 70px var(--blue-glow);
-  }
+@keyframes textPulse {
+  0%,100% { text-shadow:0 0 40px rgba(123,183,255,.6); }
+  50% { text-shadow:0 0 80px rgba(123,183,255,1); }
 }
 
 .hero p {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 1px;
+  margin-top:1.4rem;
+  letter-spacing:1px;
+  color:rgba(255,255,255,.75);
+  animation:fadeUp 2s ease forwards;
 }
 
-/* =====================
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(15px); }
+  to { opacity:1; transform:none; }
+}
+
+/* ======================
    FOOTER
-===================== */
+====================== */
 footer {
-  position: absolute;
-  bottom: 1.5rem;
-  width: 100%;
-  text-align: center;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  z-index: 2;
+  position:absolute;
+  bottom:1.5rem;
+  width:100%;
+  text-align:center;
+  font-size:.85rem;
+  color:rgba(255,255,255,.5);
+  z-index:2;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOLOGRAM BACKGROUND -->
-<div class="hologram">
-  <!-- 80 animated hologram lines -->
+<!-- BACKGROUND PARTICLES -->
+<div class="bg-particles">
   <script>
-    for (let i = 1; i <= 80; i++) {
-      document.write(`<span style="--i:${i}"></span>`);
+    for(let i=0;i<90;i++){
+      document.write(
+        `<span style="
+          left:${Math.random()*100}%;
+          animation-duration:${6+Math.random()*10}s;
+          animation-delay:${-Math.random()*20}s;
+        "></span>`
+      );
     }
   </script>
 </div>
