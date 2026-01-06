@@ -53,16 +53,16 @@ nav a {
 }
 
 /* ======================
-   GUIDE CONTAINER
+   GUIDE
 ====================== */
 .guide {
   max-width: 900px;
   margin: 3rem auto 6rem;
-  padding: 3rem;
+  padding: 3.2rem;
   background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 28px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(22px);
   animation: fadeIn 0.8s ease;
 }
 
@@ -94,32 +94,31 @@ nav a {
 }
 
 .section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
   color: var(--blue);
 }
 
-.section ul {
-  margin-left: 1.2rem;
-  margin-top: 0.8rem;
+.section ol {
+  margin-left: 1.4rem;
 }
 
 .section li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.9rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
 }
 
 /* ======================
-   HIGHLIGHT BOX
+   NOTICE
 ====================== */
 .notice {
-  margin-top: 2rem;
-  padding: 1.4rem 1.6rem;
-  border-radius: 18px;
-  background: rgba(77,163,255,0.15);
-  border: 1px solid rgba(77,163,255,0.4);
-  color: #fff;
+  margin-top: 3rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 20px;
+  background: rgba(77,163,255,0.18);
+  border: 1px solid rgba(77,163,255,0.45);
+  font-weight: 600;
 }
 
 /* ======================
@@ -147,66 +146,119 @@ footer {
 </header>
 
 <main class="guide">
-  <h1>Secure Trading Guide</h1>
+  <h1>MFA Secure Guide</h1>
 
   <p>
-    This guide explains how to trade safely on Sky Market.
-    Please read carefully before making any transaction.
+    This guide explains how to fully secure your Microsoft / Minecraft
+    account using MFA. Follow each step carefully.
   </p>
 
+  <!-- CHANGING EMAILS -->
   <div class="section">
-    <h2>1. Always Use the Middleman</h2>
-    <ul>
-      <li>Never trade directly with unknown users.</li>
-      <li>Use Sky Market’s official middleman service.</li>
-      <li>Middleman ensures both buyer and seller are protected.</li>
-    </ul>
+    <h2>Changing the Email</h2>
+    <ol>
+      <li>Login to the account.</li>
+      <li>Go to <strong>account.live.com/proofs/manage</strong> and enter the provided email.</li>
+      <li>If prompted with <em>"Enter the code we sent to se***@nethermfas.com"</em>,
+          click <strong>Other ways to sign in</strong> or <strong>Use password instead</strong>.</li>
+    </ol>
   </div>
 
+  <!-- PASSWORD RECOVERY -->
   <div class="section">
-    <h2>2. Verify Official Contacts</h2>
-    <ul>
-      <li>Only trust contacts listed on the Sky Market website.</li>
-      <li>Fake staff and impersonators are common.</li>
-      <li>If unsure, ask for verification in the Discord server.</li>
-    </ul>
+    <h2>Recover Your Password</h2>
+    <ol>
+      <li>On the "Enter Password" screen, click <strong>Forgot password?</strong></li>
+      <li>Select <strong>I don't have any of these</strong>.</li>
+      <li>If the option does not appear:
+        <ul>
+          <li>Try logging in at <strong>xbox.com</strong></li>
+          <li>Use a <strong>United States VPN</strong></li>
+          <li>Try a different browser or device</li>
+        </ul>
+      </li>
+    </ol>
   </div>
 
+  <!-- RECOVERY CODE -->
   <div class="section">
-    <h2>3. Payment Safety</h2>
-    <ul>
-      <li>Sky Market uses crypto-only payments.</li>
-      <li>Never send funds before middleman confirmation.</li>
-      <li>Double-check wallet addresses.</li>
-    </ul>
+    <h2>Use Recovery Code</h2>
+    <ol>
+      <li>Paste the 25-character recovery code:</li>
+      <li><strong>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></li>
+      <li>Click <strong>Use recovery code</strong>.</li>
+      <li>Change the password and update the security email.</li>
+    </ol>
   </div>
 
+  <!-- 2FA -->
   <div class="section">
-    <h2>4. Account Delivery</h2>
-    <ul>
-      <li>Accounts must be delivered through the middleman.</li>
-      <li>Verify access before confirming completion.</li>
-      <li>Change all credentials immediately after receiving.</li>
-    </ul>
+    <h2>Set Up Two-Step Verification</h2>
+    <ol>
+      <li>Login again at <strong>account.live.com/proofs/manage</strong>.</li>
+      <li>Add an authenticator app:
+        <ul>
+          <li>Microsoft Authenticator</li>
+          <li>Authy</li>
+          <li>Zyger 2FA</li>
+        </ul>
+      </li>
+      <li>Enable two-step verification.</li>
+    </ol>
   </div>
 
+  <!-- SIGN IN METHOD -->
   <div class="section">
-    <h2>5. Common Scams to Avoid</h2>
-    <ul>
-      <li>Users asking to skip middleman.</li>
-      <li>Fake Discord servers or copied usernames.</li>
-      <li>Pressure tactics or limited-time threats.</li>
-    </ul>
+    <h2>Add a New Sign-In Method</h2>
+    <ol>
+      <li>Click <strong>Add a new way to sign in or verify</strong>.</li>
+      <li>Select <strong>Email a Code</strong>.</li>
+      <li>Enter your email and retrieve the verification code.</li>
+    </ol>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="section">
+    <h2>Update Profile Information</h2>
+    <ol>
+      <li>Go to <strong>account.microsoft.com/profile</strong>.</li>
+      <li>Edit full name, date of birth, and country.</li>
+      <li>Write this information down for account recovery.</li>
+    </ol>
+  </div>
+
+  <!-- ALIAS -->
+  <div class="section">
+    <h2>Add a New Email Alias</h2>
+    <ol>
+      <li>Click <strong>Edit account info</strong>.</li>
+      <li>Select <strong>Add Email</strong>.</li>
+      <li>Add a <strong>new Outlook email</strong> (recommended).</li>
+      <li>Verify and set it as <strong>Primary</strong>.</li>
+      <li>Remove the old alias.</li>
+    </ol>
+  </div>
+
+  <!-- FULL SECURITY -->
+  <div class="section">
+    <h2>Fully Securing the Account</h2>
+    <ol>
+      <li>Remove all devices at <strong>account.microsoft.com/devices</strong>.</li>
+      <li>Unlink devices at <strong>account.microsoft.com/devices/content</strong>.</li>
+      <li>Remove app permissions at <strong>microsoft.com/consent</strong>.</li>
+      <li>Leave Microsoft Family groups (if possible).</li>
+      <li>Sign out everywhere and reset Windows Hello.</li>
+    </ol>
   </div>
 
   <div class="notice">
-    ⚠️ If anything feels suspicious, stop immediately and contact
-    Sky Market staff through the official Discord server.
+    ✓ You have now fully secured your MFA account.
   </div>
+
 </main>
 
 <footer>
-  © Sky Market — Secure Trading Guide
+  © Sky Market — Secure Guide
 </footer>
 
 </body>
