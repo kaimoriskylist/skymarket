@@ -26,15 +26,15 @@ body {
   background:
     radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
-  overflow: hidden;
+  overflow-x: hidden;
   color: #fff;
 }
 
 /* ======================
-   CINEMATIC BACKGROUND
+   BACKGROUND
 ====================== */
 .bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
 }
@@ -43,12 +43,7 @@ body {
   position: absolute;
   width: 2px;
   height: 220px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--blue),
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
   opacity: 0.16;
   animation: rise linear infinite;
 }
@@ -90,27 +85,7 @@ nav a {
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-nav a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.45),
-    transparent
-  );
-  transform: translateX(-130%);
-  animation: navSweep 7s infinite;
-}
-
-@keyframes navSweep {
-  0%, 70% { transform: translateX(-130%); }
-  85% { transform: translateX(130%); }
-  100% { transform: translateX(130%); }
+  transition: 0.4s;
 }
 
 nav a:hover {
@@ -119,19 +94,18 @@ nav a:hover {
 }
 
 /* ======================
-   HERO SECTION
+   HERO
 ====================== */
 .hero {
   position: relative;
   z-index: 2;
-  height: calc(100vh - 140px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hero-box {
-  position: relative;
   width: min(960px, 92%);
   padding: 4.5rem 3.5rem;
   border-radius: 32px;
@@ -143,130 +117,100 @@ nav a:hover {
   );
   backdrop-filter: blur(26px);
   border: 1px solid var(--border);
-  box-shadow:
-    0 0 100px rgba(77,163,255,0.35),
-    inset 0 0 45px rgba(255,255,255,0.08);
+  box-shadow: 0 0 100px rgba(77,163,255,0.35);
   animation: floatBox 9s ease-in-out infinite;
+  text-align: center;
 }
 
-/* Floating idle motion */
 @keyframes floatBox {
-  0%, 100% { transform: translateY(0); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
 }
 
-/* Scanline */
-.hero-box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
-  );
-  animation: scan 4.5s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes scan {
-  from { transform: translateY(-120%); }
-  to { transform: translateY(120%); }
-}
-
-/* Outer glow pulse */
-.hero-box::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 36px;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    var(--blue-strong),
-    transparent
-  );
-  filter: blur(26px);
-  opacity: 0.55;
-  animation: glowPulse 6s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.8; }
-}
-
-/* TEXT */
 .hero h1 {
   font-size: clamp(4.5rem, 9vw, 8rem);
   font-weight: 900;
-  letter-spacing: 2px;
-  background: linear-gradient(180deg, #ffffff, var(--blue));
+  background: linear-gradient(180deg, #fff, var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 80px rgba(140,198,255,0.9);
-  animation: textGlow 4s ease-in-out infinite;
-}
-
-@keyframes textGlow {
-  0%,100% { text-shadow: 0 0 45px rgba(140,198,255,0.6); }
-  50% { text-shadow: 0 0 95px rgba(140,198,255,1); }
 }
 
 .hero h2 {
-  margin-top: 1.4rem;
-  font-size: 1.25rem;
-  letter-spacing: 1px;
+  margin-top: 1.2rem;
   color: rgba(255,255,255,0.75);
-  animation: fadeUp 1.8s ease forwards;
 }
 
 .hero p {
   margin-top: 1.2rem;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.05rem;
-  line-height: 1.7;
   color: rgba(255,255,255,0.7);
-  animation: fadeUp 2.6s ease forwards;
+  line-height: 1.7;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: none; }
+/* ======================
+   INFO SECTION
+====================== */
+.info {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 3rem;
+}
+
+.info-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 2.5rem;
+}
+
+.info-card {
+  padding: 2.8rem 2.2rem;
+  border-radius: 28px;
+  background: var(--glass);
+  backdrop-filter: blur(22px);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 80px rgba(77,163,255,0.25);
+  animation: floatCard 8s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  background: linear-gradient(180deg,#fff,var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.info-card p {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
 }
 
 /* ======================
    FOOTER
 ====================== */
 footer {
-  position: absolute;
-  bottom: 1.5rem;
-  width: 100%;
+  padding: 2rem;
   text-align: center;
-  font-size: 0.85rem;
   color: rgba(255,255,255,0.5);
-  z-index: 2;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND EFFECTS -->
 <div class="bg">
   <script>
-    for (let i = 0; i < 100; i++) {
-      document.write(`
-        <span style="
-          left:${Math.random() * 100}%;
-          animation-duration:${6 + Math.random() * 12}s;
-          animation-delay:${-Math.random() * 20}s;
-        "></span>
-      `);
+    for(let i=0;i<100;i++){
+      document.write(`<span style="left:${Math.random()*100}%;
+      animation-duration:${6+Math.random()*12}s;
+      animation-delay:${-Math.random()*20}s;"></span>`);
     }
   </script>
 </div>
@@ -275,8 +219,9 @@ footer {
   <div class="logo">SKY</div>
   <nav>
     <a href="middleman.html">Middleman</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="secure.html">Secure Guide</a>
     <a href="market.html">Market</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
@@ -285,12 +230,41 @@ footer {
     <h1>Sky Market</h1>
     <h2>Secure • Trusted • Best Purchasing Hub</h2>
     <p>
-      Sky Market provides the cheapest MC accounts and SB accounts
-      with full warranty, trusted delivery, and a secure middleman
-      system designed for safe and reliable trading.
+      A secure marketplace where buyers and sellers meet safely,
+      backed by a trusted middleman system and verified community.
     </p>
   </div>
 </main>
+
+<section class="info">
+  <div class="info-grid">
+
+    <div class="info-card">
+      <h3>Secure Trading</h3>
+      <p>
+        Learn how to trade safely using our Secure Guide.
+        Avoid scams and understand the full middleman process.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <h3>Buyer Slots</h3>
+      <p>
+        Buyers can easily find verified sellers,
+        compare offers, and complete transactions securely.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <h3>Seller Slots</h3>
+      <p>
+        Sellers can meet active buyers,
+        list products, and complete deals with full protection.
+      </p>
+    </div>
+
+  </div>
+</section>
 
 <footer>
   © Made By Hynoxi | discord.gg/skymart
