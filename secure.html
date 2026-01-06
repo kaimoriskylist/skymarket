@@ -8,10 +8,12 @@
 <style>
 :root {
   --blue: #8cc6ff;
+  --blue-strong: #4da3ff;
   --glass: rgba(255,255,255,0.08);
   --border: rgba(255,255,255,0.2);
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -25,12 +27,38 @@ body {
     radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
   color: #fff;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ======================
+   BACKGROUND MOTION
+====================== */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg span {
+  position: absolute;
+  width: 2px;
+  height: 260px;
+  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity: 0.14;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(140vh); }
+  to { transform: translateY(-280vh); }
 }
 
 /* ======================
    HEADER
 ====================== */
 header {
+  position: relative;
+  z-index: 3;
   padding: 2rem 3rem;
   display: flex;
   justify-content: space-between;
@@ -50,47 +78,89 @@ nav a {
   border: 1px solid var(--border);
   color: #fff;
   text-decoration: none;
+  transition: 0.35s;
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(77,163,255,0.6);
 }
 
 /* ======================
-   GUIDE
+   GUIDE CONTAINER
 ====================== */
 .guide {
-  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
   margin: 3rem auto 6rem;
-  padding: 3.2rem;
-  background: var(--glass);
+  padding: 3.6rem 3.8rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.12)
+  );
   border: 1px solid var(--border);
-  border-radius: 28px;
-  backdrop-filter: blur(22px);
-  animation: fadeIn 0.8s ease;
+  border-radius: 32px;
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 120px rgba(77,163,255,0.25),
+    inset 0 0 40px rgba(255,255,255,0.06);
+  animation: pageEnter 1s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: none; }
 }
 
+/* SCANLINE */
+.guide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(120%); }
+}
+
+/* ======================
+   TEXT
+====================== */
 .guide h1 {
-  font-size: 3rem;
+  font-size: clamp(2.8rem, 5vw, 3.4rem);
   font-weight: 900;
   background: linear-gradient(180deg,#fff,var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
+  text-shadow: 0 0 60px rgba(140,198,255,0.9);
+  margin-bottom: 1.4rem;
 }
 
-.guide p {
-  color: rgba(255,255,255,0.8);
+.intro {
+  font-size: 1.05rem;
   line-height: 1.8;
-  margin-bottom: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2.4rem;
 }
 
 /* ======================
    SECTIONS
 ====================== */
 .section {
-  margin-top: 2.8rem;
+  margin-top: 3.2rem;
+  animation: fadeUp 0.8s ease both;
 }
 
 .section h2 {
@@ -99,26 +169,59 @@ nav a {
   color: var(--blue);
 }
 
+.section p {
+  margin-bottom: 0.8rem;
+  color: rgba(255,255,255,0.8);
+}
+
 .section ol {
-  margin-left: 1.4rem;
+  margin-left: 1.6rem;
 }
 
 .section li {
   margin-bottom: 0.9rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ======================
-   NOTICE
+   CALLOUT BOXES
 ====================== */
-.notice {
-  margin-top: 3rem;
-  padding: 1.6rem 1.8rem;
-  border-radius: 20px;
-  background: rgba(77,163,255,0.18);
-  border: 1px solid rgba(77,163,255,0.45);
-  font-weight: 600;
+.callout {
+  margin-top: 1.8rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(77,163,255,0.16);
+  border: 1px solid rgba(77,163,255,0.4);
+  color: #fff;
+}
+
+/* ======================
+   FINAL NOTICE
+====================== */
+.final {
+  margin-top: 3.5rem;
+  padding: 1.8rem;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(77,163,255,0.3),
+    rgba(77,163,255,0.15)
+  );
+  border: 1px solid rgba(77,163,255,0.6);
+  font-weight: 800;
+  text-align: center;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,100% { box-shadow: 0 0 30px rgba(77,163,255,0.5); }
+  50% { box-shadow: 0 0 70px rgba(77,163,255,1); }
 }
 
 /* ======================
@@ -135,6 +238,20 @@ footer {
 
 <body>
 
+<div class="bg">
+  <script>
+    for(let i=0;i<120;i++){
+      document.write(`
+        <span style="
+          left:${Math.random()*100}%;
+          animation-duration:${8+Math.random()*14}s;
+          animation-delay:${-Math.random()*25}s;
+        "></span>
+      `);
+    }
+  </script>
+</div>
+
 <header>
   <div class="logo">SKY</div>
   <nav>
@@ -148,117 +265,66 @@ footer {
 <main class="guide">
   <h1>MFA Secure Guide</h1>
 
-  <p>
-    This guide explains how to fully secure your Microsoft / Minecraft
-    account using MFA. Follow each step carefully.
+  <p class="intro">
+    This document explains how to fully secure your Microsoft / Minecraft
+    account using MFA. Follow each step carefully and do not skip any section.
+    Security mistakes are permanent and may result in account loss.
   </p>
 
-  <!-- CHANGING EMAILS -->
   <div class="section">
     <h2>Changing the Email</h2>
     <ol>
       <li>Login to the account.</li>
-      <li>Go to <strong>account.live.com/proofs/manage</strong> and enter the provided email.</li>
-      <li>If prompted with <em>"Enter the code we sent to se***@nethermfas.com"</em>,
-          click <strong>Other ways to sign in</strong> or <strong>Use password instead</strong>.</li>
+      <li>Go to <strong>account.live.com/proofs/manage</strong>.</li>
+      <li>Enter the provided email address.</li>
+      <li>If asked for a code, use <strong>Other ways to sign in</strong>.</li>
+    </ol>
+    <div class="callout">Take your time here — rushing increases mistakes.</div>
+  </div>
+
+  <div class="section">
+    <h2>Password Recovery</h2>
+    <ol>
+      <li>Select <strong>Forgot password?</strong>.</li>
+      <li>Choose <strong>I don’t have any of these</strong>.</li>
+      <li>If unavailable, try Xbox.com or a US VPN.</li>
     </ol>
   </div>
 
-  <!-- PASSWORD RECOVERY -->
   <div class="section">
-    <h2>Recover Your Password</h2>
+    <h2>Using Recovery Code</h2>
     <ol>
-      <li>On the "Enter Password" screen, click <strong>Forgot password?</strong></li>
-      <li>Select <strong>I don't have any of these</strong>.</li>
-      <li>If the option does not appear:
-        <ul>
-          <li>Try logging in at <strong>xbox.com</strong></li>
-          <li>Use a <strong>United States VPN</strong></li>
-          <li>Try a different browser or device</li>
-        </ul>
-      </li>
+      <li>Paste the 25-character recovery code.</li>
+      <li>Confirm and change the password.</li>
+      <li>Update the security email immediately.</li>
     </ol>
   </div>
 
-  <!-- RECOVERY CODE -->
   <div class="section">
-    <h2>Use Recovery Code</h2>
+    <h2>Two-Step Verification</h2>
     <ol>
-      <li>Paste the 25-character recovery code:</li>
-      <li><strong>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</strong></li>
-      <li>Click <strong>Use recovery code</strong>.</li>
-      <li>Change the password and update the security email.</li>
-    </ol>
-  </div>
-
-  <!-- 2FA -->
-  <div class="section">
-    <h2>Set Up Two-Step Verification</h2>
-    <ol>
-      <li>Login again at <strong>account.live.com/proofs/manage</strong>.</li>
-      <li>Add an authenticator app:
-        <ul>
-          <li>Microsoft Authenticator</li>
-          <li>Authy</li>
-          <li>Zyger 2FA</li>
-        </ul>
-      </li>
+      <li>Add an authenticator app.</li>
       <li>Enable two-step verification.</li>
+      <li>Save backup codes offline.</li>
     </ol>
   </div>
 
-  <!-- SIGN IN METHOD -->
   <div class="section">
-    <h2>Add a New Sign-In Method</h2>
+    <h2>Final Lockdown</h2>
     <ol>
-      <li>Click <strong>Add a new way to sign in or verify</strong>.</li>
-      <li>Select <strong>Email a Code</strong>.</li>
-      <li>Enter your email and retrieve the verification code.</li>
+      <li>Remove all devices.</li>
+      <li>Revoke app permissions.</li>
+      <li>Sign out everywhere.</li>
     </ol>
   </div>
 
-  <!-- PROFILE -->
-  <div class="section">
-    <h2>Update Profile Information</h2>
-    <ol>
-      <li>Go to <strong>account.microsoft.com/profile</strong>.</li>
-      <li>Edit full name, date of birth, and country.</li>
-      <li>Write this information down for account recovery.</li>
-    </ol>
+  <div class="final">
+    ✓ Your account is now fully secured with MFA.
   </div>
-
-  <!-- ALIAS -->
-  <div class="section">
-    <h2>Add a New Email Alias</h2>
-    <ol>
-      <li>Click <strong>Edit account info</strong>.</li>
-      <li>Select <strong>Add Email</strong>.</li>
-      <li>Add a <strong>new Outlook email</strong> (recommended).</li>
-      <li>Verify and set it as <strong>Primary</strong>.</li>
-      <li>Remove the old alias.</li>
-    </ol>
-  </div>
-
-  <!-- FULL SECURITY -->
-  <div class="section">
-    <h2>Fully Securing the Account</h2>
-    <ol>
-      <li>Remove all devices at <strong>account.microsoft.com/devices</strong>.</li>
-      <li>Unlink devices at <strong>account.microsoft.com/devices/content</strong>.</li>
-      <li>Remove app permissions at <strong>microsoft.com/consent</strong>.</li>
-      <li>Leave Microsoft Family groups (if possible).</li>
-      <li>Sign out everywhere and reset Windows Hello.</li>
-    </ol>
-  </div>
-
-  <div class="notice">
-    ✓ You have now fully secured your MFA account.
-  </div>
-
 </main>
 
 <footer>
-  © Sky Market — Secure Guide
+  © Sky Market — Security First
 </footer>
 
 </body>
