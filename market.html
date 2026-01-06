@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Market — Sky Market</title>
+
+<style>
+:root {
+  --blue: #8cc6ff;
+  --blue-strong: #4da3ff;
+  --glass: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
+    radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* ======================
+   BACKGROUND MOTION
+====================== */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg span {
+  position: absolute;
+  width: 2px;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity: 0.16;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(130vh); }
+  to { transform: translateY(-230vh); }
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  padding: 0.7rem 1.7rem;
+  border-radius: 14px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  color: #fff;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+}
+
+/* ======================
+   MARKET SECTION
+====================== */
+.market {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 3rem 6rem;
+}
+
+.market-header {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.market-header h1 {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #ffffff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 70px rgba(140,198,255,0.9);
+}
+
+.market-header p {
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* GRID */
+.products {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.2rem;
+}
+
+/* PRODUCT CARD */
+.card {
+  position: relative;
+  padding: 2.8rem 2.3rem;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.14)
+  );
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 80px rgba(77,163,255,0.25),
+    inset 0 0 35px rgba(255,255,255,0.07);
+  animation: floatCard 8s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 0 120px rgba(77,163,255,0.45);
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scanline */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(120%); }
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(180deg, #ffffff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.5rem;
+}
+
+/* ======================
+   FOOTER
+====================== */
+footer {
+  position: relative;
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  z-index: 2;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+  <script>
+    for (let i = 0; i < 100; i++) {
+      document.write(`
+        <span style="
+          left:${Math.random() * 100}%;
+          animation-duration:${6 + Math.random() * 12}s;
+          animation-delay:${-Math.random() * 20}s;
+        "></span>
+      `);
+    }
+  </script>
+</div>
+
+<header>
+  <div class="logo">SKY</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="middleman.html">Middleman</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="market">
+  <div class="market-header">
+    <h1>Sky MarketPlace</h1>
+    <p>
+      We provide various products. To buy these accounts,
+      please join our Discord server:
+      <strong>discord.gg/skymart</strong>.
+      If the vanity link does not work, contact us directly.
+    </p>
+  </div>
+
+  <div class="products">
+
+    <div class="card">
+      <h2>Minecraft Accounts</h2>
+      <div class="price">$5</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>Full access accounts</p>
+      <p>Format: Email + recovery code</p>
+      <p>Unbanned everywhere</p>
+    </div>
+
+    <div class="card">
+      <h2>Minecraft Accounts VIP</h2>
+      <div class="price">$6</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>Full access accounts</p>
+      <p>VIP rank on Hypixel</p>
+      <p>Unbanned everywhere</p>
+    </div>
+
+    <div class="card">
+      <h2>Minecraft Accounts VIP+</h2>
+      <div class="price">$7</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>VIP+ rank on Hypixel</p>
+      <p>Full access accounts</p>
+      <p>Unbanned everywhere</p>
+    </div>
+
+    <div class="card">
+      <h2>Minecraft Accounts MVP</h2>
+      <div class="price">$8</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>MVP rank on Hypixel</p>
+      <p>Full access accounts</p>
+      <p>Unbanned everywhere</p>
+    </div>
+
+    <div class="card">
+      <h2>Minecraft Accounts MVP+</h2>
+      <div class="price">$11</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>MVP+ rank on Hypixel</p>
+      <p>Price may increase for special plus colors</p>
+      <p>Unbanned everywhere</p>
+    </div>
+
+    <div class="card">
+      <h2>SkyBlock Accounts</h2>
+      <div class="price">$27 / 1B Networth</div>
+      <p><strong>Payments:</strong> Litecoin / Bitcoin / Solana / USDT / USDC</p>
+      <p>SkyBlock profile on Hypixel</p>
+      <p>Includes rare items</p>
+      <p>Price increases with networth</p>
+    </div>
+
+    <div class="card">
+      <h2>ChatGPT Plus</h2>
+      <div class="price">$1</div>
+      <p>Full access account</p>
+      <p>All accounts are legally paid</p>
+      <p>To buy, contact us on Discord</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 Sky Market — All Rights Reserved
+</footer>
+
+</body>
+</html>
