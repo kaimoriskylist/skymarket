@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Middleman — Sky Market</title>
+
+<style>
+:root {
+  --blue: #8cc6ff;
+  --blue-strong: #4da3ff;
+  --glass: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, #173f86, #050b18 70%),
+    radial-gradient(circle at 85% 80%, #0b2b63, transparent 60%);
+  overflow-x: hidden;
+  color: #fff;
+}
+
+/* ======================
+   BACKGROUND MOTION
+====================== */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg span {
+  position: absolute;
+  width: 2px;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, var(--blue), transparent);
+  opacity: 0.16;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  from { transform: translateY(130vh); }
+  to { transform: translateY(-230vh); }
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  padding: 0.7rem 1.7rem;
+  border-radius: 14px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  color: #fff;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(77,163,255,0.7);
+}
+
+/* ======================
+   MIDDLEMAN SECTION
+====================== */
+.middleman {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 3rem 6rem;
+}
+
+.mm-header {
+  max-width: 900px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.mm-header h1 {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #ffffff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 70px rgba(140,198,255,0.9);
+}
+
+.mm-header p {
+  margin-top: 1.2rem;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* ======================
+   CONTENT GRID
+====================== */
+.mm-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  padding: 3rem 2.6rem;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.14)
+  );
+  backdrop-filter: blur(26px);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 80px rgba(77,163,255,0.25),
+    inset 0 0 35px rgba(255,255,255,0.07);
+  animation: floatCard 9s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scanline */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { transform: translateY(-120%); }
+  to { transform: translateY(120%); }
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #ffffff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.6rem;
+}
+
+/* ======================
+   CALCULATOR
+====================== */
+.calc {
+  margin-top: 1.2rem;
+}
+
+.calc input {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.calc input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.result {
+  margin-top: 1.2rem;
+  padding: 1.4rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  text-align: center;
+  animation: fadeUp 0.6s ease;
+}
+
+.result span {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ======================
+   FOOTER
+====================== */
+footer {
+  position: relative;
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  z-index: 2;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+  <script>
+    for (let i = 0; i < 90; i++) {
+      document.write(`
+        <span style="
+          left:${Math.random() * 100}%;
+          animation-duration:${6 + Math.random() * 12}s;
+          animation-delay:${-Math.random() * 20}s;
+        "></span>
+      `);
+    }
+  </script>
+</div>
+
+<header>
+  <div class="logo">SKY</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="market.html">Market</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="middleman">
+  <div class="mm-header">
+    <h1>Middleman Service</h1>
+    <p>
+      Our middleman service ensures secure and trusted transactions
+      between buyers and sellers.
+    </p>
+  </div>
+
+  <div class="mm-grid">
+
+    <div class="card">
+      <h2>Service Fees</h2>
+      <p>Transactions below <strong>$10</strong> are charged a <strong>5%</strong> fee.</p>
+      <p>Transactions <strong>$10 and above</strong> are charged a <strong>2%</strong> fee.</p>
+      <p>Fees are calculated automatically and transparently.</p>
+    </div>
+
+    <div class="card">
+      <h2>Fee Calculator</h2>
+      <p>Enter transaction amount to calculate middleman fee.</p>
+
+      <div class="calc">
+        <input
+          type="number"
+          id="amount"
+          placeholder="Enter amount in USD"
+          min="0"
+          oninput="calculateFee()"
+        />
+
+        <div class="result" id="result" style="display:none;">
+          <div>Middleman Fee</div>
+          <span id="fee">$0.00</span>
+          <div>Total With Fee</div>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 Sky Market — All Rights Reserved
+</footer>
+
+<script>
+function calculateFee() {
+  const amount = parseFloat(document.getElementById("amount").value);
+  const result = document.getElementById("result");
+  const feeEl = document.getElementById("fee");
+  const totalEl = document.getElementById("total");
+
+  if (!amount || amount <= 0) {
+    result.style.display = "none";
+    return;
+  }
+
+  const rate = amount < 10 ? 0.05 : 0.02;
+  const fee = amount * rate;
+  const total = amount + fee;
+
+  feeEl.textContent = "$" + fee.toFixed(2);
+  totalEl.textContent = "$" + total.toFixed(2);
+  result.style.display = "block";
+}
+</script>
+
+</body>
+</html>
